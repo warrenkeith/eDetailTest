@@ -1,0 +1,42 @@
+body {
+	font-family: sans-serif;
+	font-size: 20px;
+	color: white;
+}
+
+a {
+	display: block;
+	font-size: 20px;
+	line-height: 40px;
+	color: white;
+	text-decoration: none;
+}
+
+p {
+	margin-top: 14px;
+	font-size: 15px;
+}
+
+pre {
+	font-size: 15px !important;
+}
+
+h1 {
+	font-size: 3.77em;
+	text-align: center;
+}
+
+code, pre {
+	color: #f779c6;
+}
+
+.slide {
+	background-color: #282a36;
+}
+
+.mainContainer {
+	width: 924px;
+	position: absolute;
+	top: 40px;
+	left: 50px;
+}
