@@ -7,6 +7,7 @@ var SlidesModule = (function () {
 	$slides = $('.slide'),
 	oSlideHeight = $('#Slides .slide').height(),
 	scrollEl = '#wrapper',
+	hSwipeTrigger = $('#horizontalSwipe'),
 	indicators = false,
 	onScrollEndCallback;
 	$slidesWrap.css('height', cCount * oSlideHeight + 'px');
@@ -50,6 +51,16 @@ var SlidesModule = (function () {
 
 	function horizontalSwipe() {
 		// **************** Write a function that allows the user to swipe left or right to the desired pages.*********************
+
+		$(hSwipeTrigger).swipe({
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				console.log("swipe " + direction );
+				// if (direction == 'left') {
+
+				// }
+	        }
+      	});
+
 	}
 
 	function init() {
