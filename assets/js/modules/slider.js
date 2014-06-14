@@ -5,17 +5,22 @@ var SlidesModule = (function () {
 	var cCount = $('.slide').length,
 	$slidesWrap = $('#Slides'),
 	$slides = $('.slide'),
+	oSlideHeight = $('#Slides .slide').height(),
 	scrollEl = '#wrapper',
 	indicators = false,
 	onScrollEndCallback;
 	$slidesWrap.css('height', cCount * oSlideHeight + 'px');
 
-
 	// **************** Uncomment the following two lines, fix the mistake and set relevant options.*********************
 
-	// oScroller = new iscroll(scrollEl, {
+	// I'm not gonna lie, it took me an embarrasingly long time to notice the misspelling of IScroll.
 
-	// });
+	
+	oScroller = new IScroll(scrollEl, {
+		snap: true,
+		momentum: false
+	});
+	
 
 	oScroller.on('scrollEnd', scrollEnd);
 
