@@ -16,13 +16,11 @@ var SlidesModule = (function () {
 
 	// I'm not gonna lie, it took me an embarrasingly long time to notice the misspelling of IScroll.
 
-	
 	oScroller = new IScroll(scrollEl, {
 		snap: true,
 		momentum: false
 	});
 	
-
 	oScroller.on('scrollEnd', scrollEnd);
 
 	function scrollEnd() {
@@ -52,6 +50,7 @@ var SlidesModule = (function () {
 	function horizontalSwipe() {
 		// **************** Write a function that allows the user to swipe left or right to the desired pages.*********************
 
+		// get the url data
 		var pageBack = $('#horizontalSwipe').data('prev');
 		var pageForward = $('#horizontalSwipe').data('next');
 
@@ -59,13 +58,29 @@ var SlidesModule = (function () {
 			swipe:function(event, direction) {
 				console.log("swipe " + direction );
 				if (direction === 'right' && pageBack !== undefined) {
-						window.location.href = pageBack;
+						loadContent(pageBack);
 				} else if (direction === 'left' && pageForward !== undefined) {
-					window.location.href = pageForward;
+						loadContent(pageForward);
 				}
 	        }
       	});
 
+      	function loadContent(url) {
+      		$.ajax({
+      			url: url,
+      			success: function(newContent) {
+      				// if we're arriving via ajax, strip the hash - going from slide 5-2 to 4 upsets it
+      				window.location.hash="";
+      				$('body').html(newContent);
+      				console.log('new body loaded via ajax');
+      				// I haven't put the URL into the history as presumably there won't be an address bar or traditional navigation controls on the completed application
+      			},
+      			// any problems (like cross domain errors when running from file://), just load page as normal
+      			error: function() {
+      				window.location.href = url;
+      			}
+      		});
+      	}
 	}
 
 	function init() {
