@@ -116,13 +116,11 @@ var breadcrumbs = (function () {
 			} else {
 				var currentUrlNoHash = window.location.pathname;
 				var destinationSlideNumber = $(this).attr("href").split('#slide')[1];
-				console.log(destinationSlideNumber);
 				var currentHashOnly = window.location.hash.substr();
 				var newUrl = '/' + $(this).attr("href").split('#')[0];
 				// is the location on the same page?
-				// TODO: jumping from first slide to target slide
+				// TODO: for future, solve jumping from first slide to target slide
 				if (currentUrlNoHash === newUrl) {
-					console.log('yep it\'s on the same page');
 					oScroller.goToPage(0,destinationSlideNumber,1000);
 					$('.breadcrumbNavBg, .breadcrumbNavWrapper').removeClass('active');
 				} else {
