@@ -17,7 +17,7 @@ var SlidesModule = (function () {
 	// I'm not gonna lie, it took me an embarrasingly long time to notice the misspelling of IScroll.
 
 	oScroller = new IScroll(scrollEl, {
-		snap: true,
+		snap: $slides,
 		momentum: false
 	});
 	
@@ -73,7 +73,7 @@ var SlidesModule = (function () {
       				window.location.hash="";
       				$('body').html(newContent);
       				console.log('new body loaded via ajax');
-      				// I haven't put the URL into the history as presumably there won't be an address bar or traditional navigation controls on the completed application
+  					 // I haven't put the URL into the history as presumably there won't be an address bar or traditional navigation controls on the completed application
       			},
       			// any problems (like cross domain errors when running from file://), just load page as normal
       			error: function() {

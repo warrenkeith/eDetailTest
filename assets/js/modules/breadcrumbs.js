@@ -107,7 +107,6 @@ var breadcrumbs = (function () {
 	function init() {
 		// If the user is scrolling through the navigation, do nothing, otherwise, go to the page clicked
 		$("a").on("touchend", function () {
-			console.log(touches);
 			if (window.navScroller.scrolling===true || touches === true) {
 				setTimeout(function() {
 					window.navScroller.scrolling=false;
@@ -115,9 +114,22 @@ var breadcrumbs = (function () {
 				
 				return false;
 			} else {
-				window.location.href = $(this).attr("href");
-				$('.breadcrumbNavBg, .breadcrumbNavWrapper').removeClass('active');
-			}
+				var currentUrlNoHash = window.location.pathname;
+				var destinationSlideNumber = $(this).attr("href").split('#slide')[1];
+				console.log(destinationSlideNumber);
+				var currentHashOnly = window.location.hash.substr();
+				var newUrl = '/' + $(this).attr("href").split('#')[0];
+				// is the location on the same page?
+				// TODO: jumping from first slide to target slide
+				if (currentUrlNoHash === newUrl) {
+					console.log('yep it\'s on the same page');
+					oScroller.goToPage(0,destinationSlideNumber,1000);
+					$('.breadcrumbNavBg, .breadcrumbNavWrapper').removeClass('active');
+				} else {
+					window.location.href = newUrl;
+					$('.breadcrumbNavBg, .breadcrumbNavWrapper').removeClass('active');
+				}
+		}
 		});
 
 		window.oScroller.on('scrollEnd', function( event ) {
