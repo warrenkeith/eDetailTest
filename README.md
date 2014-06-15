@@ -8,5 +8,5 @@ I noticed that when clicking on a navigation tab within the same page, the hash 
 
 I've loaded the x-axis swipes via ajax, but you get cross domain errors if you're using file:// protocol. In this instance it falls back to standard page refreshes.
 
-Cheers
-- Warren
+Cheers,
+Warren
