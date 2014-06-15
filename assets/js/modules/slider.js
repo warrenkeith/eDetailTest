@@ -52,12 +52,17 @@ var SlidesModule = (function () {
 	function horizontalSwipe() {
 		// **************** Write a function that allows the user to swipe left or right to the desired pages.*********************
 
-		$(hSwipeTrigger).swipe({
-			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-				console.log("swipe " + direction );
-				// if (direction == 'left') {
+		var pageBack = $('#horizontalSwipe').data('prev');
+		var pageForward = $('#horizontalSwipe').data('next');
 
-				// }
+		$(scrollEl).swipe({
+			swipe:function(event, direction) {
+				console.log("swipe " + direction );
+				if (direction === 'right' && pageBack !== undefined) {
+						window.location.href = pageBack;
+				} else if (direction === 'left' && pageForward !== undefined) {
+					window.location.href = pageForward;
+				}
 	        }
       	});
 

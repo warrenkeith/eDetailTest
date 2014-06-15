@@ -6,7 +6,7 @@ var breadcrumbs = (function () {
 	function _storeThisSlide() {
 		setTimeout(function() {
 			var thisSlide = window.oScroller.currentPage.pageY;
-			console.log(thisSlide);
+			// console.log(thisSlide);
 
 			$('.slide').removeClass('activeSlide').eq(thisSlide).addClass('activeSlide');
 
@@ -22,7 +22,7 @@ var breadcrumbs = (function () {
 			setTimeout(function() {
 				$('.breadcrumbUl li span').removeClass('on');
 				$('.breadcrumbUl li span[data-breadcrumb="'+ slide +'"]').addClass('on');
-				console.log('data-breadcrumb is ' + slide);
+				// console.log('data-breadcrumb is ' + slide);
 			},100);
 		}
 	}
